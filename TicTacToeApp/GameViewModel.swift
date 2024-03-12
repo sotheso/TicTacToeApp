@@ -20,14 +20,14 @@ final class GameViewModel: ObservableObject{
         
         @Published var alertItem: AlertsItem?
     
-    func processPlayerMove(for position: Int){
+    func processPlayerMove(for i: Int){
         
 // اکر مربع اشغال شده ای را ضربه زدیم چیزی رو ریترن نکنه
-            if isSquareOccupied(in: move, forIndex: position) {return}
-            move[position] = Move(player: .Human, boardIndex: position)
+            if isSquareOccupied(in: move, forIndex: i) {return}
+            move[i] = Move(player: .Human, boardIndex: i)
            
             // check for win condition
-        if checkWinCondition(for: .Human, in: move){
+            if checkWinCondition(for: .Human, in: move){
                 alertItem = AlertsContext.humenWin
                 return
             }
@@ -41,10 +41,11 @@ final class GameViewModel: ObservableObject{
 
             
 // حرکت کامپیوتر با تاخیر
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){ [self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
                 let computerPosition = determineComputerMovePosition(in: move)
                     move[computerPosition] = Move(player: .AI, boardIndex: computerPosition )
-                
+                isGameboardDisabled = false
+
                 if checkWinCondition(for: .AI, in: move){
                     alertItem = AlertsContext.AIWin
                     return
@@ -53,8 +54,6 @@ final class GameViewModel: ObservableObject{
                     alertItem = AlertsContext.Drow
                     return
                 }
-                isGameboardDisabled = false
-
             }
         
     }
@@ -71,7 +70,7 @@ final class GameViewModel: ObservableObject{
     func determineComputerMovePosition(in move:[Move?]) -> Int{
         
 //   If AI can win, then win
-        let winPatterns: Set<Set<Int>> = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0,3,6], [1, 4,7], [10, 4, 81],[2, 4, 6],[2,5,6]]
+        let winPatterns: Set<Set<Int>> = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0,3,6], [1, 4,7], [2, 5, 8],[0, 4, 8],[2,4,6]]
         
         let AIMove = move.compactMap{$0}.filter{$0.player == .AI}
         let AIPositions = Set(AIMove.map{$0.boardIndex})
@@ -123,7 +122,7 @@ final class GameViewModel: ObservableObject{
 // check for win condition
     func checkWinCondition(for Player: Player, in move: [Move?]) -> Bool{
 // شرایط برد
-        let winPatterns: Set<Set<Int>> = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0,3,6], [1, 4,7], [10, 4, 81],[2, 4, 6],[2,5,6]]
+        let winPatterns: Set<Set<Int>> = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0,3,6], [1, 4,7], [2, 5, 8],[0, 4, 8],[2,4,6]]
 
 // حرکت بازیکن >>> حذف تمام صفر ها >>> فیلتر کردن هر بازی کن
         let playerMove = move.compactMap{$0}.filter{$0.player == Player}

@@ -23,7 +23,7 @@ struct GameView: View {
                     ForEach(0..<9){ i in
                         ZStack{
                             GameSquareView(prowy: geo)
-                            PlayerIndicator(systemImageName:  VM.move[i]?.indicator ?? "")
+                            PlayerIndicator(systemImageName: VM.move[i]?.indicator ?? "")
                         }
                         .onTapGesture {
                             VM.processPlayerMove(for: i)
@@ -40,10 +40,11 @@ struct GameView: View {
             .padding()
             .disabled(VM.isGameboardDisabled)
             .alert(item: $VM.alertItem, content: {item in
-                Alert(title: item.title, message: item.message, dismissButton: .default(item.buttomTitel, action: {VM.resetGame() }))
+                Alert(title: item.title, message: item.message, dismissButton: .default(item.buttomTitel, action: {VM.resetGame()}))
             })
          }
     }
+
 }
 
 
