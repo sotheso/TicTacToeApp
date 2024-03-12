@@ -6,14 +6,19 @@
 //
 
 import SwiftUI
+import TipKit
 
 struct GameView: View {
     @StateObject private var VM = GameViewModel()
+    
+    let startGameTip = StartGameTip()
+    let setTipMent = SetTipMent()
     
     var body: some View {
         GeometryReader{ geo in
             VStack{
                 Spacer()
+                TipView(setTipMent)
                 LazyVGrid(columns: VM.columns, spacing: 5){
                     ForEach(0..<9){ i in
                         ZStack{
@@ -22,7 +27,12 @@ struct GameView: View {
                         }
                         .onTapGesture {
                             VM.processPlayerMove(for: i)
+// باطل کننده Tip
+//                            startGameTip.invalidate(reason: .actionPerformed)
+                            
                         }
+// تیپ داخل بوک
+//                        .popoverTip(startGameTip)
                     }
                 }
                 Spacer()
@@ -54,6 +64,10 @@ struct Move{
 
 #Preview {
     GameView()
+        .task {
+            try? Tips.resetDatastore()
+            try? Tips.configure([.displayFrequency(.immediate), .datastoreLocation(.applicationDefault)])
+        }
 }
 
 struct GameSquareView: View {

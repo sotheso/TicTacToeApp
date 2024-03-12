@@ -13,6 +13,7 @@
 		9B3FC6FC2B9FF7E3003DE4B6 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FC6FB2B9FF7E3003DE4B6 /* GameView.swift */; };
 		9B3FC6FE2B9FF7E4003DE4B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B3FC6FD2B9FF7E4003DE4B6 /* Assets.xcassets */; };
 		9B3FC7012B9FF7E4003DE4B6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B3FC7002B9FF7E4003DE4B6 /* Preview Assets.xcassets */; };
+		9B5724DA2BA05D60002A2AFF /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5724D92BA05D60002A2AFF /* Tip.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		9B3FC6FB2B9FF7E3003DE4B6 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		9B3FC6FD2B9FF7E4003DE4B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B3FC7002B9FF7E4003DE4B6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9B5724D92BA05D60002A2AFF /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				9B3FC6FB2B9FF7E3003DE4B6 /* GameView.swift */,
 				9B17F50B2BA0447E003A8DA0 /* GameViewModel.swift */,
 				9B17F5092BA0365D003A8DA0 /* Alerts.swift */,
+				9B5724D92BA05D60002A2AFF /* Tip.swift */,
 				9B3FC6FD2B9FF7E4003DE4B6 /* Assets.xcassets */,
 				9B3FC6FF2B9FF7E4003DE4B6 /* Preview Content */,
 			);
@@ -145,6 +148,7 @@
 			files = (
 				9B17F50C2BA0447E003A8DA0 /* GameViewModel.swift in Sources */,
 				9B3FC6FC2B9FF7E3003DE4B6 /* GameView.swift in Sources */,
+				9B5724DA2BA05D60002A2AFF /* Tip.swift in Sources */,
 				9B17F50A2BA0365D003A8DA0 /* Alerts.swift in Sources */,
 				9B3FC6FA2B9FF7E3003DE4B6 /* TicTacToeAppApp.swift in Sources */,
 			);
